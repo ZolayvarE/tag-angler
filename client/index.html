@@ -14,7 +14,7 @@
       <input type='submit' value='submit'></input>
     </form>
     <ol>
-      <li ng-repeat='tag in list | orderBy: "-count"'>{{ tag.text }} was found {{ tag.count }} times</li>
+      <li ng-repeat='tag in list | orderBy: "-count"'>"{{ tag.text }}" (Popularity Score: {{ tag.count }})</li>
     </ol>
   </div>
 </body>
