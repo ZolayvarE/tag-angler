@@ -2,14 +2,18 @@
 <html>
 <head>
   <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.min.js"></script>
+  <script src="index.js"></script>
+  <script src="/query/queryController.js"></script>
   <title>Tag Angler</title>
 </head>
-<body>
-  <div>Placeholder Text</div>
-  <form ng-submit="{{console.log('hello')}}">
-    <input type="text" required>
-    <button>Click Me</button>
-  </form>
-
+<body ng-app='TagAngler'>
+  <div ng-controller='queryController'>
+    <div>Placeholder Text</div>
+    <form ng-submit="">
+      <input type="text" ng-model='queryString' required></input>
+      <button>Click Me</button>
+    </form>
+    {{ queryString }}
+  </div>
 </body>
 </html>
