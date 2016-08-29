@@ -4,6 +4,7 @@
   "description": "YouTube SEO made easy.",
   "main": "index.js",
   "scripts": {
+    "start": "nodemon server.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -15,5 +16,8 @@
   "bugs": {
     "url": "https://github.com/ZolayvarE/tag-angler/issues"
   },
-  "homepage": "https://github.com/ZolayvarE/tag-angler#readme"
+  "homepage": "https://github.com/ZolayvarE/tag-angler#readme",
+  "dependencies": {
+    "body-parser": "^1.15.2"
+  }
 }
