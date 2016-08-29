@@ -12,8 +12,10 @@ var memCache = {};
 app.get('/query', function (req, res) {
   var searchTerm = req.body.query || 'aardvark';
   if (memCache[searchTerm]) {
+    console.log('Serving tags for "' + searchTerm + '" from memCache');
     res.send(memCache[searchTerm]);
   } else {
+    console.log('Finding video ids for: "' + searchTerm + '"');
     Youtube.search.list({
       part: 'id',
       maxResults: 10,
@@ -32,16 +34,32 @@ app.get('/query', function (req, res) {
         videoIds.push(getVideoId(videos[i]));
       }
       
-      // Youtube.video.list({
-      //   part: 'snippet',
-      //   maxResults: 10,
-      //   id: videoIds,
-        
-      // }, function (error, results) {
+      console.log('Looking up tags for: "' + searchTerm + '"');
+      Youtube.videos.list({
+        part: 'snippet',
+        maxResults: 10,
+        id: videoIds.join(','),
+        key: keys.youtube
+      }, function (error, results, body) {
+        var videos = results.items;
+        var allTags = [];
 
-      // });
+        var getVideoTags = function (videoObject) {
+          return videoObject.snippet.tags;
+        };
 
-      res.send(videoIds);
+        for (var i = 0; i < videos.length; i++) {
+          var currentTags = getVideoTags(videos[i]);
+          if (currentTags) {
+            allTags = allTags.concat(currentTags);            
+          }
+        }
+        memCache[searchTerm] = allTags;
+        console.log('Serving tags for "' + searchTerm + '" from YouTube query');
+        res.send(allTags);
+      });
+
+      // res.send(videoIds);
     });
   }
 });
