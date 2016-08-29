@@ -18,7 +18,7 @@ app.post('/query', function (req, res) {
     console.log('Finding video ids for: "' + searchTerm + '"');
     Youtube.search.list({
       part: 'id',
-      maxResults: 10,
+      maxResults: 15,
       q: searchTerm,
       type: 'video',
       key: keys.youtube
@@ -34,7 +34,7 @@ app.post('/query', function (req, res) {
       console.log('Looking up tags for: "' + searchTerm + '"');
       Youtube.videos.list({
         part: 'snippet',
-        maxResults: 10,
+        maxResults: 15,
         id: videoIds.join(','),
         key: keys.youtube
       }, function (error, results, body) {
