@@ -12,10 +12,10 @@ var memCache = {};
 app.post('/query', function (req, res) {
   var searchTerm = req.body.query || 'aardvark';
   if (memCache[searchTerm]) {
-    console.log('Serving tags for "' + searchTerm + '" from memCache');
+    // console.log('Serving tags for "' + searchTerm + '" from memCache');
     res.send(memCache[searchTerm]);
   } else {
-    console.log('Finding video ids for: "' + searchTerm + '"');
+    // console.log('Finding video ids for: "' + searchTerm + '"');
     Youtube.search.list({
       part: 'id',
       maxResults: 15,
@@ -31,7 +31,7 @@ app.post('/query', function (req, res) {
       for (var i = 0; i < videos.length; i++) {
         videoIds.push(getVideoId(videos[i]));
       }
-      console.log('Looking up tags for: "' + searchTerm + '"');
+      // console.log('Looking up tags for: "' + searchTerm + '"');
       Youtube.videos.list({
         part: 'snippet',
         maxResults: 15,
@@ -50,7 +50,7 @@ app.post('/query', function (req, res) {
           }
         }
         memCache[searchTerm] = allTags;
-        console.log('Serving tags for "' + searchTerm + '" from YouTube query');
+        // console.log('Serving tags for "' + searchTerm + '" from YouTube query');
         res.send(allTags);
       });
 
