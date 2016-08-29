@@ -36,3 +36,6 @@ bower_components/
 
 # Database Directory
 db/
+
+# Api Keys
+secretKeys.js

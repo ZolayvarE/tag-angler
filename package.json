@@ -18,6 +18,7 @@
   },
   "homepage": "https://github.com/ZolayvarE/tag-angler#readme",
   "dependencies": {
-    "body-parser": "^1.15.2"
+    "body-parser": "^1.15.2",
+    "youtube-api": "^2.0.2"
   }
 }
