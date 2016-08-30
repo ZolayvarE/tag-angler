@@ -13,10 +13,10 @@
 <body>
 <h1 class='title'>Tag Angler</h1>
 <nav>
-  <a ui-sref="login">Login</a>
-  <a ui-sref="main">Search</a>
-  <a ui-sref="signup">Sign Up</a>
-  <a ui-sref="logout" onclick='window.localStorage.clear()'>Logout</a>
+  <a class='left' ui-sref="main">Search</a>
+  <a class='right' ui-sref="login">Login</a>
+  <a class='right' ui-sref="signup">Sign Up</a>
+  <a class='right' ui-sref="logout" onclick='window.localStorage.clear()'>Logout</a>
 </nav>
 <div ui-view></div>
 </body>

@@ -34,11 +34,3 @@ nav * {
 form {
   margin-left: 20px;
 }
-
-.dirty.valid {
-  border-color: green;
-}
-
-.dirty.invalid {
-  border-color: red;
-}

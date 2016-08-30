@@ -1,4 +1,8 @@
 app.controller('queryController', ['$scope', '$state', '$http', function($scope, $state, $http) {
+  if (!window.localStorage.token) {
+    $state.transitionTo('login');
+  }
+
   $scope.searchTerm = '';
   $scope.list = [];
   $scope.counter = {};
