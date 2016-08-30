@@ -1,21 +1,20 @@
 var express = require('express');
 var bodyParser = require('body-parser');
 var Youtube = require('youtube-api');
-var keys = require('./secretKeys.js');
+var mongoose = require('mongoose');
+var keys = require('./config/secretKeys.js');
 var app = express();
 
 app.use(bodyParser());
-app.use(express.static(__dirname + '/client'));
+app.use(express.static(__dirname + '/../client'));
 
 var memCache = {};
 
 app.post('/query', function (req, res) {
   var searchTerm = req.body.query || 'aardvark';
   if (memCache[searchTerm]) {
-    // console.log('Serving tags for "' + searchTerm + '" from memCache');
     res.send(memCache[searchTerm]);
   } else {
-    // console.log('Finding video ids for: "' + searchTerm + '"');
     Youtube.search.list({
       part: 'id',
       maxResults: 15,
@@ -31,7 +30,6 @@ app.post('/query', function (req, res) {
       for (var i = 0; i < videos.length; i++) {
         videoIds.push(getVideoId(videos[i]));
       }
-      // console.log('Looking up tags for: "' + searchTerm + '"');
       Youtube.videos.list({
         part: 'snippet',
         maxResults: 15,
@@ -50,14 +48,14 @@ app.post('/query', function (req, res) {
           }
         }
         memCache[searchTerm] = allTags;
-        // console.log('Serving tags for "' + searchTerm + '" from YouTube query');
+        console.log('Serving tags for "' + searchTerm + '" from YouTube query');
         res.send(allTags);
       });
-
-      // res.send(videoIds);
     });
   }
 });
 
+var port = process.env.port || 3571;
+app.listen(port);
 
-app.listen(3571);
+console.log('Listening on port:', port);

@@ -4,7 +4,7 @@
   "description": "YouTube SEO made easy.",
   "main": "index.js",
   "scripts": {
-    "start": "nodemon server.js",
+    "start": "mongod --dbpath db && nodemon server/server.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -18,7 +18,12 @@
   },
   "homepage": "https://github.com/ZolayvarE/tag-angler#readme",
   "dependencies": {
+    "bcrypt": "^0.8.7",
     "body-parser": "^1.15.2",
+    "express": "^4.14.0",
+    "express-session": "^1.14.1",
+    "mongoose": "^4.5.10",
+    "nodemon": "^1.10.2",
     "youtube-api": "^2.0.2"
   }
 }
