@@ -11,11 +11,12 @@ app.controller('authController', ['$scope', '$location', '$http', function($scop
         password: $scope.password
       })
     }).then(function (result, err) {
-      console.log(err);
+      window.localStorage.token = JSON.stringify(result.data);
     }, function (err) {
       console.err(err);
     });
 
-    $scope.searchTerm = '';
+    $scope.username = '';
+    $scope.password = '';
   };
 }]);
