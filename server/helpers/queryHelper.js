@@ -41,7 +41,6 @@ module.exports = {
             }
           }
           memCache[searchTerm] = allTags;
-          console.log('Serving tags for "' + searchTerm + '" from YouTube query');
           res.send(allTags);
         });
       });

@@ -2,13 +2,6 @@ body {
   background-color: #EAF7FF;
 }
 
-.title {
-  margin: 0;
-  padding: 20px;
-  background-color: #28536C;
-  color: white;
-  text-shadow: 2px 2px black;
-}
 
 h2 {
   margin-left: 20px;
@@ -33,4 +26,17 @@ nav * {
 
 form {
   margin-left: 20px;
+}
+.title {
+  margin: 0;
+  padding: 10px;
+  padding-left: 20px;
+  background-color: #28536C;
+}
+
+.title * {
+  margin: 0px;
+  margin-top: 10px;
+  color: white;
+  text-shadow: 2px 2px black;
 }

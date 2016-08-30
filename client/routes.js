@@ -7,6 +7,9 @@ app.config(function ($stateProvider, $urlRouterProvider) {
     .state('logout', {
       templateUrl: '/views/logoutView.html'
     })
+    .state('loginRequired', {
+      templateUrl: '/views/loginRequiredView.html'
+    })
     .state('login', {
       templateUrl: '/views/loginView.html'
     })
