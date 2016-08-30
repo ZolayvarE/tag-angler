@@ -1,0 +1,11 @@
+.title {
+
+}
+
+.dirty.valid {
+  border-color: green;
+}
+
+.dirty.invalid {
+  border-color: red;
+}

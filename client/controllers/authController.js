@@ -2,7 +2,6 @@ app.controller('authController', ['$scope', '$state', '$http', function($scope, 
   $scope.username = '';
   $scope.password = '';
   $scope.login = function () {
-    // console.log(JSON.stringify({ query: $scope.searchTerm }));
     $http({
       method: 'POST',
       url: '/login',
@@ -32,7 +31,7 @@ app.controller('authController', ['$scope', '$state', '$http', function($scope, 
         password: $scope.password
       })
     }).then(function (result, err) {
-      window.localStorage.token = JSON.stringify(result.data);
+      window.localStorage.token = JSON.stringify(result.data.token);
     }, function (err) {
       console.err(err);
     });

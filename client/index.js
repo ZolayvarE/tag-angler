@@ -12,5 +12,5 @@ app.config(function ($stateProvider, $urlRouterProvider) {
     })
     .state('signup', {
       templateUrl: '/views/signupView.html'
-    })
+    });
 });

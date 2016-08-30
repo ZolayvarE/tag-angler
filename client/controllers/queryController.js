@@ -1,4 +1,4 @@
-app.controller('queryController', ['$scope', '$location', '$http', function($scope, $location, $http) {
+app.controller('queryController', ['$scope', '$state', '$http', function($scope, $state, $http) {
   $scope.searchTerm = '';
   $scope.list = [];
   $scope.counter = {};
@@ -24,6 +24,7 @@ app.controller('queryController', ['$scope', '$location', '$http', function($sco
         $scope.list.push({ text: key, count: $scope.counter[key] });
       }
     }, function (err) {
+      $state.transitionTo('login');
       err;
     });
 

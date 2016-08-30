@@ -17,8 +17,6 @@ app.set('view engine', 'pug');
 mongoose.connect('mongodb://localhost:27017', function () { console.log('connected to database!'); });
 
 app.post('/query', function (req, res) {
-  console.log(req.body.token);
-  console.log(auth.isValid(req.body.token));
   if (auth.isValid(req.body.token)) {
     query.grabTags(req, res);
   } else {
@@ -33,7 +31,10 @@ app.post('/signup', function (req, res) {
       username: req.body.username,
       password: result
     }).save().then(function () {
-      res.send(auth.validToken());
+      res.send({ 
+        resp: true,
+        token: auth.validToken()
+      });
     });
   });
 });
@@ -56,8 +57,9 @@ app.post('/login', function (req, res) {
       });
     })
     .catch(function (err) {
-      bcrypt.hash('invalid', 10, function (err, hash) {
-        res.send(hash);
+      res.send({
+        resp: false,
+        token: auth.invalidToken()
       });
     });
 });
@@ -65,11 +67,11 @@ app.post('/login', function (req, res) {
 app.use(express.static(path.join(__dirname, '/../client')));
 
 app.get('/*', function (req, res) {
-  res.redirect('/login');
+  res.redirect('/');
 });
 
 app.post('/*', function (req, res) {
-  res.redirect('/login');
+  res.redirect('/');
 });
 
 var port = process.env.port || 3571;
