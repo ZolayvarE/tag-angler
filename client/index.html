@@ -3,21 +3,18 @@
 <head>
   <link rel="stylesheet" href="https://ssl.gstatic.com/docs/script/css/add-ons1.css">
   <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.min.js"></script>
+  <script src="http://angular-ui.github.io/ui-router/release/angular-ui-router.min.js"></script>
   <script src="index.js"></script>
-  <script src="/query/queryController.js"></script>
+  <script src="/controllers/queryController.js"></script>
   <title>Tag Angler</title>
 </head>
 <body ng-app='TagAngler'>
-
-  <div ng-controller='queryController'>
-    <h1>Tag Angler</h1>
-    <form ng-submit="search()">
-      <input type="text" ng-model='searchTerm' required></input>
-      <input type='submit' value='submit'></input>
-    </form>
-    <ol>
-      <li ng-repeat='tag in list | orderBy: "-count"'>"{{ tag.text }}" (Popularity Score: {{ tag.count }})</li>
-    </ol>
-  </div>
+<h1>Tag Angler</h1>
+<nav>
+  <a href="#/login">Login</a>
+  <a href="#/main">Main Page</a>
+  <a href="#/logout">Log out</a>
+</nav>
+<div ui-view></div>
 </body>
 </html>
