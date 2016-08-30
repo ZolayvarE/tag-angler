@@ -19,4 +19,22 @@ app.controller('authController', ['$scope', '$location', '$http', function($scop
     $scope.username = '';
     $scope.password = '';
   };
+
+  $scope.signup = function () {
+    $http({
+      method: 'POST',
+      url: '/signup',
+      data: JSON.stringify({
+        username: $scope.username,
+        password: $scope.password
+      })
+    }).then(function (result, err) {
+      window.localStorage.token = JSON.stringify(result.data);
+    }, function (err) {
+      console.err(err);
+    });
+
+    $scope.username = '';
+    $scope.password = '';
+  };
 }]);

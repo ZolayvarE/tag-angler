@@ -1,0 +1,12 @@
+<div ng-controller='authController'>
+  <h1>Sign Up:</h1>
+  <form ng-submit="signup()">
+    <p>Username:</p><input type="text" ng-model='username' required></input>
+    <p>Password:</p><input type="password" ng-model='password' required></input>
+    <br></br>
+    <input type='submit' value='submit'></input>
+  </form>
+  <ol>
+    <li ng-repeat='tag in list | orderBy: "-count"'>"{{ tag.text }}" (Popularity Score: {{ tag.count }})</li>
+  </ol>
+</div>
