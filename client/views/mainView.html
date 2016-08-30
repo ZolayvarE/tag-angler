@@ -1,10 +1,18 @@
 <div ng-controller='queryController'>
   <h2>Search:</h2>
-  <form ng-submit="search()">
-    <input type="text" ng-model='searchTerm' required></input>
-    <input type='submit' value='submit'></input>
-  </form>
+  <div class='lineup'>
+    <form ng-submit="search()">
+      <input type="text" ng-model='searchTerm' required></input>
+      <input type='submit' value="Get Tags"></input>
+    </form>
+    <form ng-submit="genCSV()">
+      <input type="submit" value="Generate CSV"></input>
+    </form>
+  </div>
+  <p class='csv'>{{ csv }}</p>
   <ol>
-    <li ng-repeat='tag in list | orderBy: "-count"'>"{{ tag.text }}" (Popularity Score: {{ tag.count }})</li>
+    <li ng-repeat='tag in list | orderBy: "-popularity"'>
+      "{{ tag.text }}" (Popularity Score: {{ tag.popularity }})
+    </li>
   </ol>
 </div>

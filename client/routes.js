@@ -1,7 +1,6 @@
 var app = angular.module('TagAngler', ['ui.router']);
 
 app.config(function ($stateProvider, $urlRouterProvider) {
-  $urlRouterProvider.otherwise('');
 
   $stateProvider
     .state('logout', {
@@ -14,9 +13,12 @@ app.config(function ($stateProvider, $urlRouterProvider) {
       templateUrl: '/views/loginView.html'
     })
     .state('main', {
+      url: '/',
       templateUrl: '/views/mainView.html'
     })
     .state('signup', {
       templateUrl: '/views/signupView.html'
     });
+
+  $urlRouterProvider.otherwise('/');
 });

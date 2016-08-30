@@ -24,9 +24,7 @@ nav * {
   margin-right: 10px
 }
 
-form {
-  margin-left: 20px;
-}
+
 .title {
   margin: 0;
   padding: 10px;
@@ -39,4 +37,18 @@ form {
   margin-top: 10px;
   color: white;
   text-shadow: 2px 2px black;
+}
+
+.lineup * {
+  display: inline;
+}
+
+form {
+  margin-left: 20px;
+}
+
+.csv {
+  position: absolute;
+  right: 20px;
+  width: 50%;
 }
