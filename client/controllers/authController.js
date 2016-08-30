@@ -1,4 +1,4 @@
-app.controller('authController', ['$scope', '$location', '$http', function($scope, $location, $http) {
+app.controller('authController', ['$scope', '$state', '$http', function($scope, $state, $http) {
   $scope.username = '';
   $scope.password = '';
   $scope.login = function () {
@@ -11,7 +11,10 @@ app.controller('authController', ['$scope', '$location', '$http', function($scop
         password: $scope.password
       })
     }).then(function (result, err) {
-      window.localStorage.token = JSON.stringify(result.data);
+      window.localStorage.token = JSON.stringify(result.data.token);
+      if (result.data.resp) {
+        $state.transitionTo('main');
+      }
     }, function (err) {
       console.err(err);
     });

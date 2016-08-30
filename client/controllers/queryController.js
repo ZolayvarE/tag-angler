@@ -11,7 +11,10 @@ app.controller('queryController', ['$scope', '$location', '$http', function($sco
     $http({
       method: 'POST',
       url: '/query',
-      data: JSON.stringify({ query: $scope.searchTerm })
+      data: JSON.stringify({ 
+        query: $scope.searchTerm,
+        token: window.localStorage.token
+      })
     }).then(function (result) {
       $scope.counter = {};
       $scope.list = [];
