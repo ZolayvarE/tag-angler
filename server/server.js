@@ -3,8 +3,11 @@ var bodyParser = require('body-parser');
 var Youtube = require('youtube-api');
 var mongoose = require('mongoose');
 var keys = require('./config/secretKeys.js');
+var User = require('./database/userSchema.js');
+
 var app = express();
 
+mongoose.connect('mongodb://localhost/myapp', function () { console.log('connected to database!'); });
 app.use(bodyParser());
 app.use(express.static(__dirname + '/../client'));
 
