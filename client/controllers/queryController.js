@@ -7,13 +7,12 @@ app.controller('queryController', ['$scope', '$location', '$http', function($sco
     $scope.searchTerm = '';
   };
   $scope.search = function () {
-    // console.log(JSON.stringify({ query: $scope.searchTerm }));
     $http({
       method: 'POST',
       url: '/query',
       data: JSON.stringify({ 
         query: $scope.searchTerm,
-        token: window.localStorage.token
+        token: JSON.parse(window.localStorage.token || '"abc"') 
       })
     }).then(function (result) {
       $scope.counter = {};
@@ -25,7 +24,7 @@ app.controller('queryController', ['$scope', '$location', '$http', function($sco
         $scope.list.push({ text: key, count: $scope.counter[key] });
       }
     }, function (err) {
-      console.err(err);
+      err;
     });
 
     $scope.searchTerm = '';
