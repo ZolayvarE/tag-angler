@@ -1,14 +1,13 @@
 var app = angular.module('TagAngler', ['ui.router']);
 
-app.config(function ($stateProvider) {
+app.config(function ($stateProvider, $urlRouterProvider) {
+  $urlRouterProvider.otherwise('');
+
   $stateProvider
-    .when('/', {
-      templateUrl: '/views/mainView'
-    })
-    .when('/login', {
+    .state('login', {
       templateUrl: '/views/loginView.html'
     })
-    .when('/main', {
+    .state('main', {
       templateUrl: '/views/mainView.html'
     });
 });

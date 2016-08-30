@@ -1,19 +1,20 @@
 <!DOCTYPE html>
-<html>
+<html ng-app='TagAngler'>
 <head>
   <link rel="stylesheet" href="https://ssl.gstatic.com/docs/script/css/add-ons1.css">
   <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.min.js"></script>
   <script src="http://angular-ui.github.io/ui-router/release/angular-ui-router.min.js"></script>
   <script src="index.js"></script>
   <script src="/controllers/queryController.js"></script>
+  <script src="/controllers/authController.js"></script>
   <title>Tag Angler</title>
 </head>
-<body ng-app='TagAngler'>
+<body>
 <h1>Tag Angler</h1>
 <nav>
-  <a href="#/login">Login</a>
-  <a href="#/main">Main Page</a>
-  <a href="#/logout">Log out</a>
+  <a ui-sref="login">Login</a>
+  <a ui-sref="main">Main</a>
+  <a ui-sref="logout">Logout</a>
 </nav>
 <div ui-view></div>
 </body>
