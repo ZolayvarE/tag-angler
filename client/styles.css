@@ -10,6 +10,16 @@ body {
   text-shadow: 2px 2px black;
 }
 
+h2 {
+  margin-left: 20px;
+  color: 052436;
+}
+
+h3 {
+  margin-left: 20px;
+  color: 052436;
+}
+
 nav {
   background-color: #698DA2
 }
@@ -19,6 +29,10 @@ nav * {
   text-shadow: 1px 1px black;
   margin-left: 20px;
   margin-right: 10px
+}
+
+form {
+  margin-left: 20px;
 }
 
 .dirty.valid {

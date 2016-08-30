@@ -4,6 +4,9 @@ app.config(function ($stateProvider, $urlRouterProvider) {
   $urlRouterProvider.otherwise('');
 
   $stateProvider
+    .state('logout', {
+      templateUrl: '/views/logoutView.html'
+    })
     .state('login', {
       templateUrl: '/views/loginView.html'
     })
