@@ -41,7 +41,8 @@ app.post('/signup', function (req, res) {
 
 app.post('/login', function (req, res) {
   User.findOne({ username: req.body.username })
-    .then(function (data) {
+    .then(function (data, err) {
+      console.log(data, err);
       bcrypt.compare(req.body.password, data.password, function (err, result) {
         if (result) {
           res.send({ 

@@ -32,8 +32,11 @@ app.controller('authController', ['$scope', '$state', '$http', function($scope, 
       })
     }).then(function (result, err) {
       window.localStorage.token = JSON.stringify(result.data.token);
+      if (result.data.resp) {
+        $state.transitionTo('main');
+      }
     }, function (err) {
-      console.err(err);
+      err;
     });
 
     $scope.username = '';
